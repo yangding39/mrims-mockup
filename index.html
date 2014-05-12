@@ -45,11 +45,12 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
+            <li class="active"><a href="#">首页</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">系统管理 <b class="caret"></b></a>
+              <span class="dropdown-arrow"></span>
               <ul class="dropdown-menu">
                 <li><a href="#">用户信息</a></li>
                 <li><a href="#">医院信息</a></li>
@@ -66,16 +67,36 @@
 
 
     <div class="container">
-
+        <div class="page-header">
+          <h7>核磁共振机列表</h7>
+        </div>
       <!-- Main component for a primary marketing message or call to action -->
-      <div class="jumbotron">
-        <h1>Navbar example</h1>
-        <p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
-        <p>To see the difference between static and fixed top navbars, just scroll.</p>
-        <p>
-          <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View navbar docs &raquo;</a>
-        </p>
+        <form role="form">
+    <div class="row">
+      <label class="col-xs-1">设备类型:</label>
+      <div class="col-md-3" >
+        <select class="selectpicker" >
+          <option>请选择...</option>
+	      <option>4K</option>
+	      <option>10K</option>
+	     </select>
       </div>
+      <label class="col-xs-1">医院名称:</label>
+      <div class="col-md-3">
+        <select class="selectpicker" title="请选择...">
+          <option>请选择...</option>
+	      <option>华西</option>
+	      <option>第一人民医院</option>
+	      </select>
+      </div>
+    </div>
+    <div class="row">
+      <label class="col-xs-1">设备名称:</label>
+      <div class="col-md-3">
+         <input type="text" placeholder="请输入设备的名称" class="form-control">
+      </div>
+    </div>
+  </form>
     </div> 
     
     </div>
@@ -88,9 +109,13 @@
   </body>
     <script src="js/jquery-1.10.2.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-select.js"></script>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="js/html5shiv.js"></script>
       <script src="js/respond.src.js"></script>
     <![endif]-->
+    <script>
+     $('.selectpicker').selectpicker({ menuStyle: 'dropdown-inverse'});
+    </script>
 </html>

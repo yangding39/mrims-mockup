@@ -1,121 +1,239 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="shortcut icon" href="images/favicon.png">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="shortcut icon" href="images/favicon.png">
 
-    <title>MRI Management System</title>
+<title>MRI Management System</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+<!-- Bootstrap core CSS -->
+<link href="css/bootstrap.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="css/bootstrap-theme.css" rel="stylesheet">
-    <link href="css/sticky-footer-navbar.css" rel="stylesheet">
-    <link href="css/flat-ui.css" rel="stylesheet">
-    
-    <style type="text/css">
-    #footer {
-	   width:100%;
-	   min-height:25px;
-	   background:#222222;
-	   text-align: center;
-	   left:0px;
-	}
-    </style>
-  </head>
+<!-- Custom styles for this template -->
+<link href="css/bootstrap-theme.css" rel="stylesheet">
+<link href="css/sticky-footer-navbar.css" rel="stylesheet">
+<link href="css/flat-ui.css" rel="stylesheet">
+<link href="css/redmond/jquery-ui-1.10.4.custom.min.css" rel="stylesheet">
+<link href="css/dataTables.jqueryui.css" rel="stylesheet">
 
-  <body>
-<div id="wrap">
-    <!-- Static navbar -->
-    <div class="navbar navbar-inverse navbar-static-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#" style="color:#5BD119;font-family:STCaiyun;font-size:30px"><strong>MRIMS</strong></a>
-        </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">首页</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">系统管理 <b class="caret"></b></a>
-              <span class="dropdown-arrow"></span>
-              <ul class="dropdown-menu">
-                <li><a href="#">用户信息</a></li>
-                <li><a href="#">医院信息</a></li>
-                <li><a href="#">邮件服务器</a></li>
-              </ul>
-            </li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-             <li> <button type="submit" class="btn navbar-btn btn-success">退出</button></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </div>
+<style type="text/css">
+#footer {
+	width: 100%;
+	min-height: 25px;
+	background: #222222;
+	text-align: center;
+	left: 0px;
+}
+
+.form-horizontal .control-label {
+	width: 70px;
+}
+
+.form-horizontal .controls {
+	margin-right: 90px;
+}
+table{
+  font-size:10px;
+}
+</style>
+</head>
+
+<body>
+<div id="wrap"><!-- Static navbar -->
+<div class="navbar navbar-inverse navbar-static-top" role="navigation">
+<div class="container">
+<div class="navbar-header">
+<button type="button" class="navbar-toggle" data-toggle="collapse"
+	data-target=".navbar-collapse"
+><span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
+<span class="icon-bar"></span> <span class="icon-bar"></span></button>
+<a class="navbar-brand" href="#"
+	style="color: #5BD119; font-family: STCaiyun; font-size: 30px"
+><strong>MRIMS</strong></a></div>
+<div class="navbar-collapse collapse">
+<ul class="nav navbar-nav">
+	<li class="active"><a href="#">设备列表</a></li>
+	<li><a href="#about">About</a></li>
+	<li><a href="#contact">Contact</a></li>
+	<li class="dropdown"><a href="#" class="dropdown-toggle"
+		data-toggle="dropdown"
+	>系统管理 <b class="caret"></b></a> <span class="dropdown-arrow"></span>
+	<ul class="dropdown-menu">
+		<li><a href="#">用户信息</a></li>
+		<li><a href="#">医院信息</a></li>
+		<li><a href="#">邮件服务器</a></li>
+	</ul>
+	</li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+	<li>
+	<button type="submit" class="btn navbar-btn btn-success">退出</button>
+	</li>
+</ul>
+</div>
+<!--/.nav-collapse --></div>
+</div>
 
 
-    <div class="container">
-        <div class="page-header">
-          <h7>核磁共振机列表</h7>
-        </div>
-      <!-- Main component for a primary marketing message or call to action -->
-        <form role="form">
-    <div class="row">
-      <label class="col-xs-1">设备类型:</label>
-      <div class="col-md-3" >
-        <select class="selectpicker" >
-          <option>请选择...</option>
-	      <option>4K</option>
-	      <option>10K</option>
-	     </select>
-      </div>
-      <label class="col-xs-1">医院名称:</label>
-      <div class="col-md-3">
-        <select class="selectpicker" title="请选择...">
-          <option>请选择...</option>
-	      <option>华西</option>
-	      <option>第一人民医院</option>
-	      </select>
-      </div>
-    </div>
-    <div class="row">
-      <label class="col-xs-1">设备名称:</label>
-      <div class="col-md-3">
-         <input type="text" placeholder="请输入设备的名称" class="form-control">
-      </div>
-    </div>
-  </form>
-    </div> 
-    
-    </div>
-	<div id="footer">
-      <div class="container">
-        <p class="text-muted">Copyright (C) 2014-2015　奥泰医疗系统</p>
-      </div>
-    </div>
+<div class="container">
+<!-- Main component for a primary marketing message or call to action -->
+<!-- <form role="form" class="form-horizontal">
+<div class="row form-group"><label class="col-xs-1 ">设备类型:</label>
+<div class="col-md-3 controls"><select class="form-control">
+	<option>请选择...</option>
+	<option>4K</option>
+	<option>10K</option>
+</select></div>
+<label class="col-xs-1">医院名称:</label>
+<div class="col-md-3 controls"><select class="form-control">
+	<option>请选择...</option>
+	<option>华西</option>
+	<option>第一人民医院</option>
+</select></div>
+</div>
+<div class="row form-group"><label class="col-xs-1">设备编号:</label>
+<div class="col-md-3 controls"><input type="text"
+	placeholder="请输入设备编号" class="form-control"
+></div>
+<label class="col-xs-1">设备名称:</label>
+<div class="col-md-3 controls"><input type="text"
+	placeholder="请输入设备名称" class="form-control"
+></div>
+</div>
+<div class="row"><label class="col-xs-1"></label>
+<div class="col-md-3"></div>
+<label class="col-xs-1"></label>
+<div class="col-md-4 ">
+<button type="submit" class="btn btn-info" style="float: right;">查找</button>
+</div>
+</div>
+</form> 
+<br />  -->
+  <div id="devices">
+  </div>
+  </div>
 
-  </body>
-    <script src="js/jquery-1.10.2.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/bootstrap-select.js"></script>
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
+</div>
+<div id="footer">
+<div class="container">
+<p class="text-muted">Copyright (C) 2014-2015 奥泰医疗系统</p>
+</div>
+</div>
+
+</body>
+<script src="js/jquery-1.10.2.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.dataTables.min.js"></script>
+<script src="js/dataTables.jqueryui.js"></script>
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
       <script src="js/html5shiv.js"></script>
       <script src="js/respond.src.js"></script>
     <![endif]-->
-    <script>
-     $('.selectpicker').selectpicker({ menuStyle: 'dropdown-inverse'});
-    </script>
+<script>
+
+    var dataSet = [
+                   [false,'Internet Explorer 4.0','Win 95+','4','X'],
+                   ['Trident','Internet Explorer 5.0','Win 95+','5','C'],
+                   ['Trident','Internet Explorer 5.5','Win 95+','5.5','A'],
+                   ['Trident','Internet Explorer 6','Win 98+','6','A'],
+                   ['Trident','Internet Explorer 7','Win XP SP2+','7','A'],
+                   ['Trident','AOL browser (AOL desktop)','Win XP','6','A'],
+                   ['Gecko','Firefox 1.0','Win 98+ / OSX.2+','1.7','A'],
+                   ['Gecko','Firefox 1.5','Win 98+ / OSX.2+','1.8','A'],
+                   ['Gecko','Firefox 2.0','Win 98+ / OSX.2+','1.8','A'],
+                   ['Gecko','Firefox 3.0','Win 2k+ / OSX.3+','1.9','A'],
+                   ['Gecko','Camino 1.0','OSX.2+','1.8','A'],
+                   ['Gecko','Camino 1.5','OSX.3+','1.8','A'],
+                   ['Gecko','Netscape 7.2','Win 95+ / Mac OS 8.6-9.2','1.7','A'],
+                   ['Gecko','Netscape Browser 8','Win 98SE+','1.7','A'],
+                   ['Gecko','Netscape Navigator 9','Win 98+ / OSX.2+','1.8','A'],
+                   ['Gecko','Mozilla 1.0','Win 95+ / OSX.1+',1,'A'],
+                   ['Gecko','Mozilla 1.1','Win 95+ / OSX.1+',1.1,'A'],
+                   ['Gecko','Mozilla 1.2','Win 95+ / OSX.1+',1.2,'A'],
+                   ['Gecko','Mozilla 1.3','Win 95+ / OSX.1+',1.3,'A'],
+                   ['Gecko','Mozilla 1.4','Win 95+ / OSX.1+',1.4,'A'],
+                   ['Gecko','Mozilla 1.5','Win 95+ / OSX.1+',1.5,'A'],
+                   ['Gecko','Mozilla 1.6','Win 95+ / OSX.1+',1.6,'A'],
+                   ['Gecko','Mozilla 1.7','Win 98+ / OSX.1+',1.7,'A'],
+                   ['Gecko','Mozilla 1.8','Win 98+ / OSX.1+',1.8,'A'],
+                   ['Gecko','Seamonkey 1.1','Win 98+ / OSX.2+','1.8','A'],
+                   ['Gecko','Epiphany 2.20','Gnome','1.8','A'],
+                   ['Webkit','Safari 1.2','OSX.3','125.5','A'],
+                   ['Webkit','Safari 1.3','OSX.3','312.8','A'],
+                   ['Webkit','Safari 2.0','OSX.4+','419.3','A'],
+                   ['Webkit','Safari 3.0','OSX.4+','522.1','A'],
+                   ['Webkit','OmniWeb 5.5','OSX.4+','420','A'],
+                   ['Webkit','iPod Touch / iPhone','iPod','420.1','A'],
+                   ['Webkit','S60','S60','413','A'],
+                   ['Presto','Opera 7.0','Win 95+ / OSX.1+','-','A'],
+                   ['Presto','Opera 7.5','Win 95+ / OSX.2+','-','A'],
+                   ['Presto','Opera 8.0','Win 95+ / OSX.2+','-','A'],
+                   ['Presto','Opera 8.5','Win 95+ / OSX.2+','-','A'],
+                   ['Presto','Opera 9.0','Win 95+ / OSX.3+','-','A'],
+                   ['Presto','Opera 9.2','Win 88+ / OSX.3+','-','A'],
+                   ['Presto','Opera 9.5','Win 88+ / OSX.3+','-','A'],
+                   ['Presto','Opera for Wii','Wii','-','A'],
+                   ['Presto','Nokia N800','N800','-','A'],
+                   ['Presto','Nintendo DS browser','Nintendo DS','8.5','C/A<sup>1</sup>'],
+                   ['KHTML','Konqureror 3.1','KDE 3.1','3.1','C'],
+                   ['KHTML','Konqureror 3.3','KDE 3.3','3.3','A'],
+                   ['KHTML','Konqureror 3.5','KDE 3.5','3.5','A'],
+                   ['Tasman','Internet Explorer 4.5','Mac OS 8-9','-','X'],
+                   ['Tasman','Internet Explorer 5.1','Mac OS 7.6-9','1','C'],
+                   ['Tasman','Internet Explorer 5.2','Mac OS 8-X','1','C'],
+                   ['Misc','NetFront 3.1','Embedded devices','-','C'],
+                   ['Misc','NetFront 3.4','Embedded devices','-','A'],
+                   ['Misc','Dillo 0.8','Embedded devices','-','X'],
+                   ['Misc','Links','Text only','-','X'],
+                   ['Misc','Lynx','Text only','-','X'],
+                   ['Misc','IE Mobile','Windows Mobile 6','-','C'],
+                   ['Misc','PSP browser','PSP','-','C'],
+                   ['Other browsers','All others','-','-','U']
+               ];
+                
+               $(document).ready(function() {
+                   $('#devices').html( '<table cellpadding="0" cellspacing="0" border="0" class="display" id="deviceTable"></table>' );
+                
+                   $('#deviceTable').dataTable( {
+                       "data": dataSet,
+                       //服务器使用url属性
+                       "language":{
+                    	    "sProcessing":   "处理中...",
+                    	    "sLengthMenu":   "显示 _MENU_ 项结果",
+                    	    "sZeroRecords":  "没有匹配结果",
+                    	    "sInfo":         "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+                    	    "sInfoEmpty":    "显示第 0 至 0 项结果，共 0 项",
+                    	    "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+                    	    "sInfoPostFix":  "",
+                    	    "sSearch":       "搜索:",
+                    	    "sUrl":          "",
+                    	    "sEmptyTable":     "表中数据为空",
+                    	    "sLoadingRecords": "载入中...",
+                    	    "sInfoThousands":  ",",
+                    	    "oPaginate": {
+                    	        "sFirst":    "首页",
+                    	        "sPrevious": "上页",
+                    	        "sNext":     "下页",
+                    	        "sLast":     "末页"
+                    	    },
+                    	    "oAria": {
+                    	        "sSortAscending":  ": 以升序排列此列",
+                    	        "sSortDescending": ": 以降序排列此列"
+                    	    }
+                    	},
+                       "columns": [
+                           { "title": "Engine" },
+                           { "title": "Browser" },
+                           { "title": "Platform" },
+                           { "title": "Version", "class": "center" },
+                           { "title": "Grade", "class": "center" }
+                       ]
+                   } );   
+               } );
+</script>
 </html>

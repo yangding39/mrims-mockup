@@ -19,27 +19,8 @@
 <link href="css/flat-ui.css" rel="stylesheet">
 <link href="css/redmond/jquery-ui-1.10.4.custom.min.css" rel="stylesheet">
 <link href="css/dataTables.jqueryui.css" rel="stylesheet">
-
-<style type="text/css">
-#footer {
-	width: 100%;
-	min-height: 25px;
-	background: #222222;
-	text-align: center;
-	left: 0px;
-}
-
-.form-horizontal .control-label {
-	width: 70px;
-}
-
-.form-horizontal .controls {
-	margin-right: 90px;
-}
-table{
-  font-size:10px;
-}
-</style>
+<link href="css/dataTables.tableTools.css" rel="stylesheet">
+<link href="css/mrims.css" rel="stylesheet">
 </head>
 
 <body>
@@ -129,6 +110,8 @@ table{
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.dataTables.min.js"></script>
 <script src="js/dataTables.jqueryui.js"></script>
+<script src="js/dataTables.tableTools.js"></script>
+<script src="js/mrims.js"></script>
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
       <script src="js/html5shiv.js"></script>
@@ -195,44 +178,33 @@ table{
                    ['Misc','PSP browser','PSP','-','C'],
                    ['Other browsers','All others','-','-','U']
                ];
-                
+
+		
                $(document).ready(function() {
                    $('#devices').html( '<table cellpadding="0" cellspacing="0" border="0" class="display" id="deviceTable"></table>' );
-                
                    $('#deviceTable').dataTable( {
                        "data": dataSet,
-                       //服务器使用url属性
-                       "language":{
-                    	    "sProcessing":   "处理中...",
-                    	    "sLengthMenu":   "显示 _MENU_ 项结果",
-                    	    "sZeroRecords":  "没有匹配结果",
-                    	    "sInfo":         "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
-                    	    "sInfoEmpty":    "显示第 0 至 0 项结果，共 0 项",
-                    	    "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
-                    	    "sInfoPostFix":  "",
-                    	    "sSearch":       "搜索:",
-                    	    "sUrl":          "",
-                    	    "sEmptyTable":     "表中数据为空",
-                    	    "sLoadingRecords": "载入中...",
-                    	    "sInfoThousands":  ",",
-                    	    "oPaginate": {
-                    	        "sFirst":    "首页",
-                    	        "sPrevious": "上页",
-                    	        "sNext":     "下页",
-                    	        "sLast":     "末页"
-                    	    },
-                    	    "oAria": {
-                    	        "sSortAscending":  ": 以升序排列此列",
-                    	        "sSortDescending": ": 以降序排列此列"
-                    	    }
-                    	},
+                       //服务器使用url属性,
                        "columns": [
                            { "title": "Engine" },
                            { "title": "Browser" },
                            { "title": "Platform" },
                            { "title": "Version", "class": "center" },
                            { "title": "Grade", "class": "center" }
-                       ]
+                       ],
+                       "tableTools": {
+                           "sRowSelect": "os",
+                           "aButtons": [
+                               { "sExtends": "add", "sUrl": "?e=add"},
+                               { "sExtends": "edit", "sUrl": "?e=edit"},
+                               { "sExtends": "remove", "sUrl": "?e=remove"},
+                               {
+               					"sExtends":    "collection",
+               					"sButtonText": "导出",
+               					"aButtons":    [ "csv", "xls", "pdf" ]
+               				}
+                           ]
+                       }
                    } );   
                } );
 </script>

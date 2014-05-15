@@ -1,0 +1,33 @@
+#footer {
+	width: 100%;
+	min-height: 25px;
+	background: #222222;
+	text-align: center;
+	left: 0px;
+}
+.dataTables_wrapper .ui-toolbar{
+ padding:0px;
+}
+
+.form-horizontal .control-label {
+	width: 70px;
+}
+
+.form-horizontal .controls {
+	margin-right: 90px;
+}
+table{
+  font-size:14px;
+}
+.dataTables_filter>label{
+  margin:5px;
+  line-height:1.8;
+}
+.dataTables_length {
+    padding-top: 0.4em;
+    padding-left: 0.55em;
+}
+div.DTTT_container{
+  float:left;
+  margin:5px;
+}

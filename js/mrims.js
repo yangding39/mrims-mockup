@@ -50,12 +50,16 @@ $.fn.dataTable.TableTools.buttons.edit = $.extend(
 	        "fnClick": function( nButton, oConfig ) {
 			 var dataLength = this.fnGetSelected(oConfig).length;
 			 if (dataLength < 1 ) {
-				 alert('请选择一行！' );
+				 $("#alertDiv").modal();
+				 $("#alertContent").html("请选择一条记录");
+				 return false;
 			 }
 			 if (dataLength > 1 ) {
-				 alert('只能选择一行！' );
+				 $("#alertDiv").modal();
+				 $("#alertContent").html("最多选择一条记录");
+				 return false;
 			 }
-			 
+			 $("#editModal").modal();
 	        }
 	    }
 );
@@ -70,7 +74,12 @@ $.fn.dataTable.TableTools.buttons.remove = $.extend(
 	        "fnClick": function( nButton, oConfig ) {
 			 var dataLength = this.fnGetSelected(oConfig).length;
 			 if (dataLength < 1 ) {
-				 alert('请至少选择一行！' );
+				 $("#alertDiv").modal();
+				 $("#alertContent").html("至少选择一条记录");
+				 return false;
+			 } else {
+				 $("#alertDiv").modal();
+				 $("#alertContent").html("确定删除选择" + dataLength + "条记录" );
 			 }
 	        }
 	    }

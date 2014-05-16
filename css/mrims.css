@@ -1,3 +1,6 @@
+#wrap > .container {
+  padding: 0px 15px 0;
+}
 #footer {
 	width: 100%;
 	min-height: 25px;
@@ -30,4 +33,27 @@ table{
 div.DTTT_container{
   float:left;
   margin:5px;
+}
+.mrimsAlert {
+ font-size:10px;
+ margin:140px auto;
+ overflow:hidden;
+}
+.mrimsAlert .modal-dialog{
+ width:400px;
+}
+.mrimsAlert .modal-header{
+ font-weight:900;
+ background-color:rgb(58, 187, 135);
+}
+.mrimsAlert .modal-body{
+ font-size:14px;
+ padding:10px;
+
+}
+.mrimsAlert .modal-footer {
+padding: 10px 10px 10px;
+margin-top: 0px; 
+text-align: right;
+border-top: none;
 }

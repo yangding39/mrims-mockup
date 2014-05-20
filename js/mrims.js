@@ -36,7 +36,7 @@ $.fn.dataTable.TableTools.buttons.add = $.extend(
 	        "sDiv": "",
 	        "sButtonText": "添加",
 	        "fnClick": function( nButton, oConfig ) {
-		        alert(11);
+	    	  openDailog("添加设备");
 	        }
 	    }
 );
@@ -50,16 +50,14 @@ $.fn.dataTable.TableTools.buttons.edit = $.extend(
 	        "fnClick": function( nButton, oConfig ) {
 			 var dataLength = this.fnGetSelected(oConfig).length;
 			 if (dataLength < 1 ) {
-				 $("#alertDiv").modal();
-				 $("#alertContent").html("请选择一条记录");
+				 showAlert("请选择一条记录");
 				 return false;
 			 }
 			 if (dataLength > 1 ) {
-				 $("#alertDiv").modal();
-				 $("#alertContent").html("最多选择一条记录");
+				 showAlert("最多选择一条记录");
 				 return false;
 			 }
-			 $("#editModal").modal();
+			 openDailog("编辑设备");
 	        }
 	    }
 );
@@ -74,13 +72,21 @@ $.fn.dataTable.TableTools.buttons.remove = $.extend(
 	        "fnClick": function( nButton, oConfig ) {
 			 var dataLength = this.fnGetSelected(oConfig).length;
 			 if (dataLength < 1 ) {
-				 $("#alertDiv").modal();
-				 $("#alertContent").html("至少选择一条记录");
+				 showAlert("至少选择一条记录");
 				 return false;
 			 } else {
-				 $("#alertDiv").modal();
-				 $("#alertContent").html("确定删除选择" + dataLength + "条记录" );
+				 showAlert("确定删除选择" + dataLength + "条记录" );
 			 }
 	        }
 	    }
 );
+
+function openDailog(title){
+	var editModal = $("#editModal");
+	editModal.find("#title").html(title);
+	editModal.modal();
+}
+function showAlert(msg){
+	$("#alertDiv").modal();
+	 $("#alertContent").html(msg);
+}

@@ -8,6 +8,10 @@
 	text-align: center;
 	left: 0px;
 }
+.ui-widget-header{
+background-color:rgb(58, 187, 135);
+background-image:none;
+}
 .dataTables_wrapper .ui-toolbar{
  padding:0px;
 }
@@ -49,6 +53,7 @@ div.DTTT_container{
 .mrimsAlert .modal-body{
  font-size:14px;
  padding:10px;
+ overflow:hidden;
 
 }
 .mrimsAlert .modal-footer {
@@ -56,4 +61,22 @@ padding: 10px 10px 10px;
 margin-top: 0px; 
 text-align: right;
 border-top: none;
+}
+
+.mrimsDailog{
+	font-size:14px;
+	margin:60px auto;
+	overflow:hidden;
+}
+.mrimsDailog .modal-header{
+ font-weight:900;
+ background-color:rgb(58, 187, 135);
+ padding:1px;
+}
+.mrimsDailog .modal-header .close{
+	margin:15px;
+}
+.mrimsDailog .modal-body{
+ overflow-y:auto;
+ height:350px;
 }

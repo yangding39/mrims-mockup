@@ -38,14 +38,12 @@
 <div class="navbar-collapse collapse">
 <ul class="nav navbar-nav">
 	<li class="active"><a href="#">设备列表</a></li>
-	<li><a href="#about">About</a></li>
-	<li><a href="#contact">Contact</a></li>
+	<li><a href="#about">医院列表</a></li>
+	<li><a href="#contact">用户管理</a></li>
 	<li class="dropdown"><a href="#" class="dropdown-toggle"
-		data-toggle="dropdown"
-	>系统管理 <b class="caret"></b></a> <span class="dropdown-arrow"></span>
+		data-toggle="dropdown">系统管理 <b class="caret"></b></a> <span class="dropdown-arrow"></span>
 	<ul class="dropdown-menu">
-		<li><a href="#">用户信息</a></li>
-		<li><a href="#">医院信息</a></li>
+		<li><a href="#">用户设置</a></li>
 		<li><a href="#">邮件服务器</a></li>
 	</ul>
 	</li>
@@ -96,19 +94,43 @@
 <br />  -->
   <div id="devices">
   </div>
-<div id="editModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="editModal" class="modal fade mrimsDailog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 <div class="modal-dialog"> 
 <div class="modal-content">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">编辑设备</h3>
+    <h6 id="title">编辑设备</h6>
   </div>
   <div class="modal-body">
-    <p>对话框主体内容 ...…</p>
+    <form role="form" class="form-horizontal">
+       <div class="form-group"><label class="col-sm-2">设备编号:</label>
+		<div class="controls col-sm-7">mri00012</div>
+		</div>
+		<div class="form-group">
+		<label class="col-sm-2">设备名称:</label>
+		<div class="controls col-sm-7"><input type="text"
+			placeholder="请输入设备名称" class="form-control"></div>
+		</div>
+		<div class="row form-group"><label class="col-sm-2">设备类型:</label>
+		<div class="controls col-sm-7"><select class="form-control">
+			<option>请选择...</option>
+			<option>4K</option>
+			<option>10K</option>
+		</select></div>
+		</div>
+		<div class="row form-group">
+		<label class="col-sm-2">所属医院:</label>
+		<div class="controls col-sm-7"><select class="form-control">
+			<option>请选择...</option>
+			<option>华西</option>
+			<option>第一人民医院</option>
+		</select></div>
+		</div>
+		</form>
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
-    <button class="btn btn-primary">保存修改</button>
+    <button class="btn btn-primary">提交</button>
   </div>
 </div>
 </div>
@@ -153,63 +175,42 @@
 <script>
 
     var dataSet = [
-                   [false,'Internet Explorer 4.0','Win 95+','4','X'],
-                   ['Trident','Internet Explorer 5.0','Win 95+','5','C'],
-                   ['Trident','Internet Explorer 5.5','Win 95+','5.5','A'],
-                   ['Trident','Internet Explorer 6','Win 98+','6','A'],
-                   ['Trident','Internet Explorer 7','Win XP SP2+','7','A'],
-                   ['Trident','AOL browser (AOL desktop)','Win XP','6','A'],
-                   ['Gecko','Firefox 1.0','Win 98+ / OSX.2+','1.7','A'],
-                   ['Gecko','Firefox 1.5','Win 98+ / OSX.2+','1.8','A'],
-                   ['Gecko','Firefox 2.0','Win 98+ / OSX.2+','1.8','A'],
-                   ['Gecko','Firefox 3.0','Win 2k+ / OSX.3+','1.9','A'],
-                   ['Gecko','Camino 1.0','OSX.2+','1.8','A'],
-                   ['Gecko','Camino 1.5','OSX.3+','1.8','A'],
-                   ['Gecko','Netscape 7.2','Win 95+ / Mac OS 8.6-9.2','1.7','A'],
-                   ['Gecko','Netscape Browser 8','Win 98SE+','1.7','A'],
-                   ['Gecko','Netscape Navigator 9','Win 98+ / OSX.2+','1.8','A'],
-                   ['Gecko','Mozilla 1.0','Win 95+ / OSX.1+',1,'A'],
-                   ['Gecko','Mozilla 1.1','Win 95+ / OSX.1+',1.1,'A'],
-                   ['Gecko','Mozilla 1.2','Win 95+ / OSX.1+',1.2,'A'],
-                   ['Gecko','Mozilla 1.3','Win 95+ / OSX.1+',1.3,'A'],
-                   ['Gecko','Mozilla 1.4','Win 95+ / OSX.1+',1.4,'A'],
-                   ['Gecko','Mozilla 1.5','Win 95+ / OSX.1+',1.5,'A'],
-                   ['Gecko','Mozilla 1.6','Win 95+ / OSX.1+',1.6,'A'],
-                   ['Gecko','Mozilla 1.7','Win 98+ / OSX.1+',1.7,'A'],
-                   ['Gecko','Mozilla 1.8','Win 98+ / OSX.1+',1.8,'A'],
-                   ['Gecko','Seamonkey 1.1','Win 98+ / OSX.2+','1.8','A'],
-                   ['Gecko','Epiphany 2.20','Gnome','1.8','A'],
-                   ['Webkit','Safari 1.2','OSX.3','125.5','A'],
-                   ['Webkit','Safari 1.3','OSX.3','312.8','A'],
-                   ['Webkit','Safari 2.0','OSX.4+','419.3','A'],
-                   ['Webkit','Safari 3.0','OSX.4+','522.1','A'],
-                   ['Webkit','OmniWeb 5.5','OSX.4+','420','A'],
-                   ['Webkit','iPod Touch / iPhone','iPod','420.1','A'],
-                   ['Webkit','S60','S60','413','A'],
-                   ['Presto','Opera 7.0','Win 95+ / OSX.1+','-','A'],
-                   ['Presto','Opera 7.5','Win 95+ / OSX.2+','-','A'],
-                   ['Presto','Opera 8.0','Win 95+ / OSX.2+','-','A'],
-                   ['Presto','Opera 8.5','Win 95+ / OSX.2+','-','A'],
-                   ['Presto','Opera 9.0','Win 95+ / OSX.3+','-','A'],
-                   ['Presto','Opera 9.2','Win 88+ / OSX.3+','-','A'],
-                   ['Presto','Opera 9.5','Win 88+ / OSX.3+','-','A'],
-                   ['Presto','Opera for Wii','Wii','-','A'],
-                   ['Presto','Nokia N800','N800','-','A'],
-                   ['Presto','Nintendo DS browser','Nintendo DS','8.5','C/A<sup>1</sup>'],
-                   ['KHTML','Konqureror 3.1','KDE 3.1','3.1','C'],
-                   ['KHTML','Konqureror 3.3','KDE 3.3','3.3','A'],
-                   ['KHTML','Konqureror 3.5','KDE 3.5','3.5','A'],
-                   ['Tasman','Internet Explorer 4.5','Mac OS 8-9','-','X'],
-                   ['Tasman','Internet Explorer 5.1','Mac OS 7.6-9','1','C'],
-                   ['Tasman','Internet Explorer 5.2','Mac OS 8-X','1','C'],
-                   ['Misc','NetFront 3.1','Embedded devices','-','C'],
-                   ['Misc','NetFront 3.4','Embedded devices','-','A'],
-                   ['Misc','Dillo 0.8','Embedded devices','-','X'],
-                   ['Misc','Links','Text only','-','X'],
-                   ['Misc','Lynx','Text only','-','X'],
-                   ['Misc','IE Mobile','Windows Mobile 6','-','C'],
-                   ['Misc','PSP browser','PSP','-','C'],
-                   ['Other browsers','All others','-','-','U']
+                   ['mri0001','一号机','4K','第一人民医院'],
+                   ['mri0001','一号机','4K','华西口腔医院'],
+                   ['mri0001','一号机','10k','第一人民医院'],
+                   ['mri0001','一号机','4K','华西口腔医院'],
+                   ['mri0001','一号机','4K','第一人民医院'],
+                   ['mri0001','一号机','4K','华西口腔医院'],
+                   ['mri0001','一号机','4K','第一人民医院'],
+                   ['mri0001','一号机','4K','华西口腔医院'],
+                   ['mri0001','一号机','10K','华西口腔医院'],
+                   ['mri0001','一号机','4K','华西口腔医院'],
+                   ['mri0001','一号机','10K','华西口腔医院'],
+                   ['mri0001','一号机','4K','华西口腔医院'],
+                   ['mri0001','一号机','10K','华西口腔医院'],
+                   ['mri0001','一号机','4K','华西口腔医院'],
+                   ['mri0001','一号机','10K','华西口腔医院'],
+                   ['mri0001','一号机','4K','华西口腔医院'],
+                   ['mri0001','一号机','10K','华西口腔医院'],
+                   ['mri0001','一号机','4K','华西口腔医院'],
+                   ['mri0001','一号机','10K','华西口腔医院'],
+                   ['mri0001','一号机','4K','华西口腔医院'],
+                   ['mri0001','一号机','10K','华西口腔医院'],
+                   ['mri0001','一号机','4K','华西口腔医院'],
+                   ['mri0001','一号机','10K','华西口腔医院'],
+                   ['mri0001','一号机','4K','华西口腔医院'],
+                   ['mri0001','一号机','10K','华西口腔医院'],
+                   ['mri0001','一号机','4K','华西口腔医院'],
+                   ['mri0001','一号机','4K','第一人民医院'],
+                   ['mri0001','一号机','10K','华西口腔医院'],
+                   ['mri0001','一号机','4K','第一人民医院'],
+                   ['mri0001','一号机','10K','华西口腔医院'],
+                   ['mri0001','一号机','4K','第一人民医院'],
+                   ['mri0001','一号机','4K','华西口腔医院'],
+                   ['mri0001','一号机','4K','第一人民医院'],
+                   ['mri0001','一号机','4K','华西口腔医院'],
+                   ['mri0001','一号机','4K','第一人民医院'],
+                   ['mri0001','一号机','4K','华西口腔医院']
                ];
 
 		
@@ -219,11 +220,10 @@
                        "data": dataSet,
                        //服务器使用url属性,
                        "columns": [
-                           { "title": "Engine" },
-                           { "title": "Browser" },
-                           { "title": "Platform" },
-                           { "title": "Version", "class": "center" },
-                           { "title": "Grade", "class": "center" }
+                           { "title": "设备编号" },
+                           { "title": "设备名" },
+                           { "title": "设备类型" },
+                           { "title": "所属医院", "class": "center" }
                        ],
                        "tableTools": {
                            "sRowSelect": "os",
